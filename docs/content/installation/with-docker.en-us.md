@@ -565,6 +565,12 @@ Match User git
 
 (From 1.16.0 you will not need to set the `-c /data/gitea/conf/app.ini` option.)
 
+On hosts with SELinux enabled, it's necessary to specifically allow sshd to run docker or logins will just fail:
+
+```bash
+semanage boolean --modify --on sshd_launch_containers
+```
+
 Finally restart the SSH server. As an administrative user on the host run:
 
 ```bash
